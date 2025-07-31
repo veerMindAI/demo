@@ -1,11 +1,13 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 
 st.set_page_config(page_title="Flight Booking Chatbot")
 
 st.title("✈️ Flight Booking Chatbot Assistant")
 
-openai.api_key = st.secrets["openai_api_key"]
+client = OpenAI(api_key=st.secrets["openai_api_key"])
+response = client.chat.completions.create(...)
+
 
 flights = [
     {"id": "EK201", "from": "Dubai", "to": "London", "date": "2025-08-10", "price": "AED 2500"},
